@@ -49,3 +49,32 @@ def generate_gender(n_row=100):
         ]
     }
     return pd.DataFrame(data)
+
+
+def generate_users_missing(n_row=25):
+    data = {
+        "ID": [
+            random.randint(1, 100) if random.randint(0, 3) != 0 else None
+            for _ in range(n_row)
+        ],
+        "name": [
+            "".join(random.choices("abcdefghijklmnopqrstuvwxyz", k=5))
+            if random.randint(0, 3) != 0
+            else None
+            for _ in range(n_row)
+        ],
+        "date_of_birth": [
+            f"{random.randint(1950, 2023)}-{random.randint(1, 12):02d}-"
+            f"{random.randint(1, 28):02d}"
+            if random.randint(0, 3) != 0
+            else None
+            for _ in range(n_row)
+        ],
+        "current_country": [
+            random.choice(["USA", "Canada", "Mexico"])
+            if random.randint(0, 3) != 0
+            else None
+            for _ in range(n_row)
+        ],
+    }
+    return pd.DataFrame(data)
