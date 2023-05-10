@@ -78,3 +78,13 @@ def generate_users_missing(n_row=25):
         ],
     }
     return pd.DataFrame(data)
+
+
+def generate_age_missing(n_row=25):
+    data = {
+        "age": [
+            random.randint(18, 80) if random.randint(0, 3) != 0 else None
+            for _ in range(n_row)
+        ]
+    }
+    return pd.DataFrame(data)
